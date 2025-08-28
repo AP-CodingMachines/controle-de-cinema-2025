@@ -12,7 +12,7 @@ public class Filme : EntidadeBase<Filme>
     public GeneroFilme Genero { get; set; }
     public List<Sessao> Sessoes { get; set; }
 
-    protected Filme()
+    public Filme()
     {
         Sessoes = new List<Sessao>();
     }

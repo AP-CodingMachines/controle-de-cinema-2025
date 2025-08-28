@@ -17,7 +17,7 @@ public class Sessao : EntidadeBase<Sessao>
     public List<Ingresso> Ingressos { get; set; }
 
     [ExcludeFromCodeCoverage]
-    protected Sessao()
+    public Sessao()
     {
         Ingressos = new List<Ingresso>();
     }

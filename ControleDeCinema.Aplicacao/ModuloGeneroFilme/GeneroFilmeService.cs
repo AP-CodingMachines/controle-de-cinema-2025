@@ -32,6 +32,9 @@ public class GeneroFilmeAppService
     {
         var registros = repositorioGeneroFilme.SelecionarRegistros();
 
+        if (generoFilme is null || generoFilme.Descricao == "")
+            return Result.Fail(ResultadosErro.CampoObrigatorioVazio("Gênero de filme não pode ser vazio."));
+
         if (registros.Any(i => i.Descricao.Equals(generoFilme.Descricao)))
             return Result.Fail(ResultadosErro.RegistroDuplicadoErro("Já existe um gênero de filme registrado com esta descrição."));
 

@@ -22,6 +22,14 @@ public class GeneroFilme : EntidadeBase<GeneroFilme>
         Descricao = descricao;
     }
 
+    public void AdicionarFilme(Filme filme)
+    {
+        if (Filmes.Contains(filme))
+            return;
+
+        Filmes.Add(filme);
+    }
+
     public override void AtualizarRegistro(GeneroFilme registroEditado)
     {
         Descricao = registroEditado.Descricao;

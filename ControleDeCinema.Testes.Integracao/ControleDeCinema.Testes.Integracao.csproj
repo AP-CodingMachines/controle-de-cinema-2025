@@ -5,15 +5,12 @@
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>9b636ec7-a9bc-464b-ae50-2ab4b26b2a63</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ModuloFilme\**" />
-    <EmbeddedResource Remove="ModuloFilme\**" />
-    <None Remove="ModuloFilme\**" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="DotNet.Testcontainers" Version="1.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="MSTest" Version="3.6.4" />
     <PackageReference Include="NBuilder" Version="6.1.0" />

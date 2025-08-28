@@ -39,6 +39,12 @@ public abstract class ResultadosErro
             .WithMetadata("TipoErro", "ExclusaoBloqueada");
     }
 
+    public static Error CampoObrigatorioVazio(string mensagemErro)
+    {
+        return new Error("Campo Obrigatório Vazio")
+            .CausedBy(mensagemErro)
+            .WithMetadata("TipoErro", "CampoVazio");
+    }
 
     public static Error ExcecaoInternaErro(Exception ex)
     {
