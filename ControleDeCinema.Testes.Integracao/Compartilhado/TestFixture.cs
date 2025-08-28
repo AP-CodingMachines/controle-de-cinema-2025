@@ -1,6 +1,8 @@
 using ControleDeCinema.Dominio.ModuloGeneroFilme;
+using ControleDeCinema.Dominio.ModuloSessao;
 using ControleDeCinema.Infraestrutura.Orm.Compartilhado;
 using ControleDeCinema.Infraestrutura.Orm.ModuloGeneroFilme;
+using ControleDeCinema.Infraestrutura.Orm.ModuloSessao;
 using DotNet.Testcontainers.Containers;
 using FizzWare.NBuilder;
 using Testcontainers.PostgreSql;
@@ -13,6 +15,7 @@ public abstract class TestFixture
     protected ControleDeCinemaDbContext? dbContext;
 
     protected RepositorioGeneroFilmeEmOrm? repositorioGeneroFilme;
+    protected RepositorioSessaoEmOrm? repositorioSessao;
 
     private static IDatabaseContainer? container;
 
@@ -48,9 +51,12 @@ public abstract class TestFixture
         ConfigurarTabelas(dbContext);
 
         repositorioGeneroFilme = new RepositorioGeneroFilmeEmOrm(dbContext);
+        repositorioSessao = new RepositorioSessaoEmOrm(dbContext);
 
         BuilderSetup.SetCreatePersistenceMethod<GeneroFilme>(repositorioGeneroFilme.Cadastrar);
         BuilderSetup.SetCreatePersistenceMethod<IList<GeneroFilme>>(repositorioGeneroFilme.CadastrarEntidades);
+        BuilderSetup.SetCreatePersistenceMethod<Sessao>(repositorioSessao.Cadastrar);
+        BuilderSetup.SetCreatePersistenceMethod<IList<Sessao>>(repositorioSessao.CadastrarEntidades);
     }
 
     private static void ConfigurarTabelas(ControleDeCinemaDbContext dbContext)
@@ -58,6 +64,7 @@ public abstract class TestFixture
         dbContext.Database.EnsureCreated();
 
         dbContext.GenerosFilme.RemoveRange(dbContext.GenerosFilme);
+        dbContext.Sessoes.RemoveRange(dbContext.Sessoes);
 
         dbContext.SaveChanges();
     }
