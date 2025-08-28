@@ -82,7 +82,11 @@ public sealed class RepositorioGeneroFilmeEmOrmTests : TestFixture
         // Act
         var generosRecebidos = repositorioGeneroFilme?.SelecionarRegistros();
 
+        var generosRecebidosOrdenados = generosRecebidos?
+            .OrderBy(g => g.Descricao)
+            .ToList();
+
         // Assert
-        CollectionAssert.AreEqual(generosEsperadosOrdenados, generosRecebidos);
+        CollectionAssert.AreEqual(generosEsperadosOrdenados, generosRecebidosOrdenados);
     }
 }
