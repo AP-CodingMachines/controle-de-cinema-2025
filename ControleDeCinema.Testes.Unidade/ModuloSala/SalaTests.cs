@@ -12,14 +12,16 @@ namespace ControleDeCinema.Testes.Unidade.ModuloSala
         public void Deve_Adicionar_Sala_Corretamente()
         {
             // Arrange
-            sala = new Sala(1, 100);
+            var numeroEsperado = 1;
+            var capacidadeEsperada = 100;
 
             //Act
-            var salaAdicionada = sala;
+            var salaTeste = new Sala(numeroEsperado, capacidadeEsperada);
 
             //Assert
-            Assert.AreEqual(1, sala.Numero);
-            
+            Assert.AreEqual(numeroEsperado, salaTeste.Numero);
+            Assert.AreEqual(capacidadeEsperada, salaTeste.Capacidade);
+
         }
     }
 }
