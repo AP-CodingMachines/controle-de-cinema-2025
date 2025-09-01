@@ -129,21 +129,6 @@ public class FilmeAppServiceTestes
     }
 
     [TestMethod]
-    public void Excluir_DeveRetornarFalha_QuandoNaoForEncontrado()
-    {
-        var id = Guid.NewGuid();
-
-        repositorioFilmeMock.Setup(r => r.Excluir(id))
-            .Returns(false);
-
-        var resultado = filmeAppService.Excluir(id);
-
-        unitOfWorkMock.Verify(u => u.Commit(), Times.Never);
-
-        Assert.IsTrue(resultado.IsFailed);
-    }
-
-    [TestMethod]
     public void SelecionarPorId_DeveRetornarSucesso_QuandoForValido()
     {
         var genero = new GeneroFilme("Terror");

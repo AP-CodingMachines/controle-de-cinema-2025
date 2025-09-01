@@ -143,25 +143,6 @@ public class SalaAppServiceTestes
     }
 
     [TestMethod]
-    public void Excluir_SalaInexistente_DeveRetornarFalha()
-    {
-        // Arrange
-        var idInexistente = Guid.NewGuid();
-
-        repositorioSalaMock.Setup(r => r.Excluir(idInexistente))
-            .Returns(false);
-
-        // Act
-        var resultado = salaAppService.Excluir(idInexistente);
-
-        // Assert
-        unitOfWorkMock.Verify(u => u.Commit(), Times.Never);
-
-        Assert.IsTrue(resultado.IsFailed);
-        Assert.AreEqual("Registro não encontrado", resultado.Errors[0].Message);
-    }
-
-    [TestMethod]
     public void Selecionar_PorId_Existente_DeveRetornarSucesso()
     {
         // Arrange

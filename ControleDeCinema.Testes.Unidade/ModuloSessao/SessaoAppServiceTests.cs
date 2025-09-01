@@ -108,6 +108,9 @@ public class SessaoAppServiceTestes
         repositorioSessaoMock.Setup(r => r.SelecionarRegistroPorId(sessao.Id))
             .Returns(sessao);
 
+        repositorioSessaoMock.Setup(r => r.SelecionarRegistros())
+            .Returns(new List<Sessao>());
+
         var editada = new Sessao(new DateTime(), 30, filme, sala);
 
         repositorioSessaoMock.Setup(r => r.Editar(sessao.Id, editada))
@@ -121,8 +124,9 @@ public class SessaoAppServiceTestes
         Assert.IsTrue(resultado.IsSuccess);
     }
 
+
     [TestMethod]
-    public void Deve_Falhar_Edicao_QuandoCapacidadeForExcedida()
+    public void Deve_RetornarFalha_Edicao_QuandoCapacidadeForExcedida()
     {
         var genero = new GeneroFilme("Romance");
         var filme = new Filme("Titanic", 195, true, genero);
@@ -134,6 +138,9 @@ public class SessaoAppServiceTestes
         repositorioSessaoMock.Setup(r => r.SelecionarRegistroPorId(sessao.Id))
             .Returns(sessao);
 
+        repositorioSessaoMock.Setup(r => r.SelecionarRegistros())
+            .Returns(new List<Sessao>());
+
         var resultado = sessaoAppService.Editar(sessao.Id, editada);
 
         repositorioSessaoMock.Verify(r => r.Editar(sessao.Id, editada), Times.Never);
@@ -141,6 +148,7 @@ public class SessaoAppServiceTestes
 
         Assert.IsTrue(resultado.IsFailed);
     }
+
 
     [TestMethod]
     public void Deve_Falhar_Edicao_QuandoForDuplicado()
