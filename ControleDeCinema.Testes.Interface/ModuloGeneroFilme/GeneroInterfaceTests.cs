@@ -4,7 +4,7 @@ using ControleDeCinema.Testes.Interface.ModuloGeneroFilme;
 namespace ControleDeCinema.Testes.Interface;
 
 [TestClass]
-[TestCategory("Testes de Interface de G�nero de Filme")]
+[TestCategory("Testes de Interface de Gênero de Filme")]
 public class GeneroInterfaceTests : TestFixture
 {
     [TestMethod]
