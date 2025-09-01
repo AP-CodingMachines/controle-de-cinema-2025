@@ -83,7 +83,6 @@ public sealed class GeneroFilmeAppServiceTests
         Assert.IsTrue(resultado.IsFailed);
     }
 
-
     [TestMethod]
     public void Cadastrar_DeveRetornarFalha_QuandoGeneroForDuplicado()
     {
