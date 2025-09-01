@@ -10,7 +10,7 @@ using Moq;
 namespace ControleDeCinema.Testes.Unidades.ModuloFilme;
 
 [TestClass]
-[TestCategory("Unidade - FilmeAppService")]
+[TestCategory("Testes de Unidade de Filme")]
 public class FilmeAppServiceTestes
 {
     private FilmeAppService filmeAppService;

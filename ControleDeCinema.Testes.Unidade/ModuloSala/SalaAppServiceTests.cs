@@ -9,7 +9,7 @@ using Moq;
 namespace ControleDeCinema.Testes.Unidades.ModuloSala;
 
 [TestClass]
-[TestCategory("Unidade - SalaAppService")]
+[TestCategory("Testes de Unidade de Sala")]
 public class SalaAppServiceTestes
 {
     private SalaAppService salaAppService;
