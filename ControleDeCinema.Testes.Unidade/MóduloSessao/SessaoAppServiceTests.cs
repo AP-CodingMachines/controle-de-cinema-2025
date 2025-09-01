@@ -11,7 +11,7 @@ using Moq;
 namespace ControleDeCinema.Testes.Unidades.ModuloSessao;
 
 [TestClass]
-[TestCategory("Unidade - SessaoAppService")]
+[TestCategory("Testes de Unidade de Sessão")]
 public class SessaoAppServiceTestes
 {
     private SessaoAppService sessaoAppService;
