@@ -38,7 +38,7 @@ public class IngressoRepositorioTestes : TestFixture
         List<Ingresso> ingressosUsuarioA = new();
 
         foreach (var sessao in sessoesUsuarioA)
-        {
+    {
             var novoIngresso = sessao.GerarIngresso(1, true);
             novoIngresso.UsuarioId = idUsuario;
             ingressosUsuarioA.Add(novoIngresso);
