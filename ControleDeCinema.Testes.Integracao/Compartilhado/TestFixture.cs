@@ -26,6 +26,8 @@ public abstract class TestFixture
 
     protected RepositorioSessaoEmOrm? repositorioSessao;
 
+    protected RepositorioIngressoEmOrm? repositorioIngresso;
+
     private static IDatabaseContainer? container;
 
     [AssemblyInitialize]
@@ -63,6 +65,7 @@ public abstract class TestFixture
         repositorioSala = new RepositorioSalaEmOrm(dbContext);
         repositorioFilme = new RepositorioFilmeEmOrm(dbContext);
         repositorioSessao = new RepositorioSessaoEmOrm(dbContext);
+        repositorioIngresso = new RepositorioIngressoEmOrm(dbContext);
 
         BuilderSetup.SetCreatePersistenceMethod<GeneroFilme>(repositorioGeneroFilme.Cadastrar);
         BuilderSetup.SetCreatePersistenceMethod<IList<GeneroFilme>>(repositorioGeneroFilme.CadastrarEntidades);
@@ -72,7 +75,6 @@ public abstract class TestFixture
         BuilderSetup.SetCreatePersistenceMethod<IList<Filme>>(repositorioFilme.CadastrarEntidades);
         BuilderSetup.SetCreatePersistenceMethod<Sessao>(repositorioSessao!.Cadastrar);
         BuilderSetup.SetCreatePersistenceMethod<IList<Sessao>>(repositorioSessao.CadastrarEntidades);
-
 
     }
 
@@ -87,6 +89,8 @@ public abstract class TestFixture
         dbContext.Filmes.RemoveRange(dbContext.Filmes);
         
         dbContext.Sessoes.RemoveRange(dbContext.Sessoes);
+
+        dbContext.Ingressos.RemoveRange(dbContext.Ingressos);
 
         dbContext.SaveChanges();
     }
